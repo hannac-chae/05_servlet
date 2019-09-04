@@ -28,6 +28,7 @@ public class LifeCycleServlet extends HttpServlet {
 	 * 웹 컨테이너(톰캣)에 의해 단 한번 호출되며
 	 * 서블릿의 초기화를 담당하는 메소드
 	 */
+	@Override
 	public void init(ServletConfig config) 
 			         throws ServletException {
 		 count = 0;
@@ -40,6 +41,7 @@ public class LifeCycleServlet extends HttpServlet {
 	 * 웹 컨테이너(톰캣)에 의해 단 한번 호출되며
 	 * 서블릿 서비스를 종료하는 메소드
 	 */
+	@Override
 	public void destroy() {
 		System.out.println("destroy() 메소드가 실행되었습니다.");
 	}
