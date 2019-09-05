@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03 registerForm</title>
+<link rel="stylesheet" type="text/css"
+ 	  href="./css/registerStyle.css">
+<style type="text/css">
+
+textarea {
+	resize: none;
+}
+
+</style>
+</head>
+<body>
+	<!-- table>(tr>th*4)+(tr>td*4)*12 -->
+	<!-- form[action=""]>input[type="text" size="10" name="userName"] -->
+	<form action="register" method="post" name="memberForm" >
+		<table>
+			<tr>
+				<th colspan="4">가입폼</th>
+			</tr>
+			<tr>
+				<td class="titles">이름*</td>
+				<td colspan="3" class="inputs">
+					<input type="text" size="10" name="userName"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">아이디*</td>
+				<td colspan="3" class="inputs">
+					<input type="text" size="10" name="userId" />
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">비밀번호*</td>
+				<td colspan="3" class="inputs">
+					<input type="password" size="10" name="userPass" />
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">비밀번호 확인*</td>
+				<td colspan="3" class="inputs">
+					<input type="password" size="10" name="passConfirm" />
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">성별</td>
+				<td colspan="3" class="inputs">
+					<!-- input[type="radio" name="gender" value=""] -->
+					<input type="radio" name="gender" value="M" id="male"/> 
+					<label for="male">남</label> 
+					<input type="radio" name="gender" value="F" id="female"/>
+					<label for="female">여</label> 
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">연령대</td>
+				<td colspan="3" class="inputs">
+					<!-- select[name="age"]>(option[value""]*3) --> 
+					<select
+						name="age" id="">
+							<option value="">== 연령대를 선택 ==</option>
+							<option value="10">10대</option>
+							<option value="20">20대</option>
+							<option value="30">30대</option>
+							<option value="40">40대</option>
+							<option value="50">50대</option>
+							<option value="60">60대</option>
+							<option value="70">70대</option>
+							<option value="80">80대</option>
+							<option value="90">90대 이상</option>
+					</select>
+				</td>
+				<!-- 		<td></td> -->
+				<!-- 		<td></td> -->
+			</tr>
+			<tr>
+				<td class="titles">취미</td>
+				<td colspan="3" class="inputs">
+					<!-- form>(input[type="checkbox" name="hobby" value=""]*5) --> 
+					<input type="checkbox" id="chk1" name="hobby" value="sports" /> 
+					<label for="chk1">스포츠</label>
+					<input type="checkbox" id="chk2" name="hobby" value="surfing" /> 
+					<label for="chk2">서핑</label>
+					<input type="checkbox" id="chk3" name="hobby" value="camping" /> 
+					<label for="chk3">캠핑</label>
+					<input type="checkbox" id="chk4" name="hobby" value="music" />  
+					<label for="chk4">노래</label>
+					<input type="checkbox" id="chk5" name="hobby" value="travel" /> 
+					<label for="chk5">여행</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">이메일*</td>
+				<td colspan="3" class="inputs">
+					<input type="text" size="10" name="emailId" />
+					@ 
+					<!-- select[name="email"]>(option[value=""]*5) -->
+					<select name="emailDomain" id="">
+						<option value="">== 메일 주소 선택 ==</option>
+						<option value="naver.com">네이버</option>
+						<option value="daum.net">다음</option>
+						<option value="gamil.com">구글</option>
+						<option value="yahoo.co,kr">야후</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">전화번호</td>
+				<td colspan="3" class="inputs">
+					<!-- select[name="phone1"]>(option[value=""]*5) -->
+					<!-- +input[type="text" size="10" name="phone2"] -->
+					<!-- +input[type="text" size="10" name="phone3] -->
+					<select name="phone1" id="">
+						<option value="">==번호 선택==</option>
+						<option value="02">02</option>
+						<option value="031">031</option>
+						<option value="041">041</option>
+						<option value="042">042</option>
+						<option value="064">064</option>
+					</select>
+						-
+						<input type="text" size="5" name="phone2" />
+						-
+						<input type="text" size="5" name="phone3" />
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">주소</td>
+				<td colspan="3" class="inputs">
+				<!-- select[name="intro"]>(option[value=""]*5) -->
+					<select name="address" id="">
+						<option value="">==주소 선택==</option>
+						<option value="suwon">수원시</option>
+						<option value="daejeon">대전광역시</option>
+						<option value="cheonan">천안시</option>
+						<option value="ulsan">울산</option>
+						<option value="jeju">재주시</option>
+					</select> 
+				</td>
+			</tr>
+			<tr>
+				<td class="titles">소개말</td>
+				<td colspan="3" class="inputs">
+					<!-- textarea[rows="10" cols="30"] --> 
+					<textarea name="intro" id="" cols="30" rows="10" style="overflow-y:scroll"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="가입하기"/> 
+					<input type="reset" value="초기화"/>
+				</td>
+
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>

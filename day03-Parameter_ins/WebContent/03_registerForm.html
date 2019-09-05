@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가입 폼</title>
+<link rel="stylesheet" type="text/css" href="./css/registerStyle.css">
+<style type="text/css">
+	table { 
+		border :1px solid black;
+	}
+	tr { 
+		border :1px solid black;
+	}
+	th, td { 
+		border : 1px solid black;
+	}
+</style>
+
+</head>
+<body>
+<form action="register" method="post" name="registForm">
+<table>
+	<tr>
+		<th colspan="4">가입폼</th>
+	</tr>
+	<tr>
+		<td class="titles">이름*</td>
+		<td colspan="3" class="inputs">
+			<input type="text" name="userName" id="titles" size="10"/></input>
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">아이디*</td>
+		<td colspan="3" class="inputs">
+			<input type="text" name="userId" id="titles"  size="10"/></input>
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">비밀번호*</td>
+		<td colspan="3"  class="inputs">
+			<input type="password" name="userPass" id="titles"  size="10"/></input>
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">비밀번호 확인*</td>
+		<td colspan="3"  class="inputs">
+			<input type="password" name="passConfirm" size="10"/></input>
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">성별</td>
+		<td colspan="3"  class="inputs">
+			<input type="radio" value="male" name="gender" id="male"/> 
+			<label for="male">남</label>
+			<input type="radio" value="female" name="gender" id="female"/>
+			<label for="female">여</label>
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">연령대</td>
+		<td colspan="3"  class="inputs"> 
+		<select name="age">
+			<option>=연령대를 선택=</option>
+			<option value="10">10 대</option>
+			<option value="20">20 대</option>
+			<option value="30">30 대</option>
+			<option value="40">40 대</option>
+			<option value="50">50 대</option>
+			<option value="60">60 대</option>
+			<option value="70">70 대</option>
+			<option value="80">80 대</option>
+			<option value="90">80 대 이상</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">취미</td>
+		<td colspan="3" class="inputs">
+			<input type="checkbox" id="chk1" name="hobby" value="sport" /> 
+			<label for="chk1">스포츠</label>
+			<input type="checkbox" id="chk2" name="hobby" value="surf" /> 
+			<label for="chk2">서핑</label>
+			<input type="checkbox" id="chk3" name="hobby" value="camp" /> 
+			<label for="chk3">캠핑</label>
+			<input type="checkbox" id="chk4" name="hobby" value="sing" /> 
+			<label for="chk4">노래</label>
+			<input type="checkbox" id="chk5" name="hobby" value="travel" /> 
+			<label for="chk5">여행</label>
+			
+	</tr>
+	<tr>
+		<td class="titles">이메일*</td>
+		<td colspan="3"  class="inputs">
+			<input type="text" name="emailId" size="10" /> @
+			<select name="emailDomain">
+				<option>==메일주소를 선택== </option>
+				<option value="naver.com">네이버</option>
+				<option value="daum.net">다음</option>
+				<option value="gmail.com">지메일</option>
+				<option value="nate.net">네이트</option>
+				<option value="yahoo.co.kr">야후</option>
+		</select> 
+		</td>
+	</tr>
+	<tr>
+		<td class="titles">전화번호</td>
+		<td colspan="3" class="inputs">
+			<select name="phone1"> 
+				<option>=번호 선택= </option>
+				<option value="010">010</option>
+				<option value="011">011</option>
+				<option value="070">070</option>
+				<option value="001">001</option> 
+		</select>
+		 -
+		<input type="text" name="phone2" size="4"/>
+		 -
+		<input type="text" name="phone3" size="4"/>
+	</tr>
+	<tr>
+		<td class="titles">주소</td>
+		<td colspan="3" class="inputs">
+			<select name="address">
+				<option>=주소선택= </option>
+				<option value="seoul">서울</option>
+				<option value="busan">부산</option>
+				<option value="daegu">대구</option>
+				<option value="jeju">제주도</option>
+				<option value="etc">그 외</option>
+			</select>
+	</tr>
+	<tr>
+		<td class="titles">소개말</td>
+		<td colspan="3" class="inputs">
+			<textarea name="intro" cols="30" rows="10">
+		</textarea>
+	</tr>
+	<tr>
+		<td colspan="4" class="inputs">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" value="가입하기" />
+ 			<input type="reset" value="초기화" />
+ 		</td>
+	</tr>
+</table>
+</form>
+
+</body>
+</html>

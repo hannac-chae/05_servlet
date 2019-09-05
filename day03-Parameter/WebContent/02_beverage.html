@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_beverage</title>
+<script type="text/javascript">
+	function orderConfirm() {
+		
+		var beverages = document.chkForm.beverage;
+		var orders = "";
+		
+		for (var idx = 0; idx < beverages.length; idx++) {
+			if (beverages[idx].checked) {
+				orders += beverages[idx].value + ", ";
+			}
+		}
+		
+		alert("음료 주문 : " + orders);
+	}
+</script>
+
+</head>
+<body>
+<!-- 	form[name="chkForm"] -->
+<!-- 	>(input[type="checkbox" name="beverage" value="" id="chk$"] -->
+<!-- 	 +label[for="chk$"]{음료이름} -->
+<!-- 	 +br -->
+<!-- 	 )*4 -->
+<!-- 	+input[type="button" value="음료선택 확인" onclick="orderConfirm();"] -->
+	<form action="beverage" name="chkForm" method="post">
+		<input type="checkbox" name="beverage" value="iceAmericano" 
+		       id="chk1" />
+		<label for="chk1">아이스 아메리카노</label>
+		<br />
+		<input type="checkbox" name="beverage" value="espresso" 
+		       id="chk2" />
+		<label for="chk2">에스프레소</label>
+		<br />
+		<input type="checkbox" name="beverage" value="greenTeeLatte" 
+		       id="chk3" />
+		<label for="chk3">녹차라떼</label>
+		<br />
+		<input type="checkbox" name="beverage" value="cafeLatte" 
+		       id="chk4" />
+		<label for="chk4">카페라떼</label>
+		<br />
+		
+		<input type="button" value="음료선택 확인" onclick="orderConfirm();" />
+	 	<input type="reset" value="초기화" />
+	 	<input type="submit" value="주문하기" />
+	</form>
+</body>
+</html>

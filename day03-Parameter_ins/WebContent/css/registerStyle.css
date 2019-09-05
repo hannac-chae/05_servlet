@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* 가입폼에 적용할 스타일 */
+/* 테이블의  */
+table, th , td {
+	border: 1px solid black; 
+}
+
+.titles{
+	font-size: 20px; 
+	font-weight: bold;
+	background-color: rgb(77, 195, 255);
+}
+
+.inputs{
+	background-color: rgb(51, 153, 51); 
+}
+
+
+/* input type="text" , password 속성값을 가진 경우 */ 
+input[type=text], 
+input[type=password]{
+	/* 너비 지정 */ 
+	width: 70%; 
+	/* 경계선 속성 지정*/ 
+	border: 1px solid rgb(0, 102, 102);
+	/* 경계 모서리 스타일 지정 */ 
+	border-radius: 4px; 
+	/* 경계선과 컨텐츠 사이의 여백 */ 
+	padding: 5px; 
+}
+
+input[type=submit], 
+input[type=reset] {
+	width: 20%; 
+	/*배경색 스타일*/ 
+	background-color :#4CAF50; 
+	/* 글자 색 스타일 */ 
+	color: white;
+	/* 패딩 */ 
+	padding: 5px; 
+	/* 버튼 경계선 태두리 */ 
+	border: none;
+	/* 버튼 경계선 모서리 각도 */ 
+	border-radius: 4px; 
+	/* 버튼에 마우스가 올라갔을때 마우스 모양 */
+	cursor: pointer;
+}
+
+
+input[type=reset] { 
+	/* 초기화 버튼을 붉은색으로*/
+	color: red;
+}
