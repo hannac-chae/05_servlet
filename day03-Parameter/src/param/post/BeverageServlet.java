@@ -10,79 +10,73 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * HTML ¿¡¼­ ¹ß»ıÇÏ´Â POST ¿äÃ»°ú ±× ¿äÃ»¿¡ Àü´ŞµÈ ¿äÃ» ÆÄ¶ó¹ÌÅÍ¸¦ Ã³¸®ÇÏ´Â ¼­ºí¸´
+ * HTML ì—ì„œ ë°œìƒí•˜ëŠ”
+ * POST ìš”ì²­ê³¼ ê·¸ ìš”ì²­ì— ì „ë‹¬ëœ ìš”ì²­ íŒŒë¼ë¯¸í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì„œë¸”ë¦¿
  */
 @WebServlet("/beverage")
 public class BeverageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 02_beverage.html ¿¡¼­ ÀÔ·ÂµÈ À½·á ÁÖ¹® °á°ú checkbox ·Î ¹ß»ıÇÑ ¿äÃ» ÆÄ¶ó¹ÌÅÍ¸¦ Ã³¸®ÇÑ´Ù.
+	 * 02_beverage.html ì—ì„œ ì…ë ¥ëœ
+	 * ìŒë£Œ ì£¼ë¬¸ ê²°ê³¼ checkbox ë¡œ ë°œìƒí•œ
+	 * ìš”ì²­ íŒŒë¼ë¯¸í„°ë¥¼ ì²˜ë¦¬í•œë‹¤.
 	 */
 	protected void doPost(HttpServletRequest req
-						, HttpServletResponse res) 
-								throws ServletException, IOException {
-		// 1. ÇÑ±ÛÃ³¸®
-		// (1) ¿äÃ»ÇÑ±ÛÃ³¸®
+			            , HttpServletResponse res)
+			            		throws ServletException, IOException {
+		// 1. í•œê¸€ì²˜ë¦¬
+		// (1) ìš”ì²­í•œê¸€ì²˜ë¦¬
 		req.setCharacterEncoding("utf-8");
-
-		// (2) ÀÀ´äÇÑ±ÛÃ³¸®
+		// (2) ì‘ë‹µí•œê¸€ì²˜ë¦¬
 		res.setContentType("text/html; charset=utf-8");
-
-		// 2. <form> ¿¡¼­ ³Ñ¾î¿Â checkbox ÆÄ¶ó¹ÌÅÍ ÃßÃâ
-		// (1) form ÀÇ ¿ä¼ÒÁß name ÀÌ À¯ÀÏÇÑ °æ¿ì¿¡´Â ÀÏ¹İÀûÀ¸·Î 1°³ÀÇ String º¯¼ö·Î ¹Ş´Â´Ù.
-		// (2) checkbox ´Â ÇÏ³ªÀÇ name À¸·Î ¿©·¯°³ÀÇ °ªÀÌ Àü´ŞµÇ±â ¶§¹®¿¡
-		// String[]·Î ¹Ş¾ÆÁø´Ù´Â Á¡¿¡ ÁÖÀÇÇØ¾ß ÇÔ.
-		// (3) checkbox ´Â ÇÊ¼ö ¼±ÅÃÀÌ ¾Æ´Ñ °æ¿ì »ç¿ëµÇ´Â form ¿ä¼Ò¸®¹Ç·Î
-		// ¾Æ¹«·± ¼±ÅÃÀÌ µÇÁö ¾Ê°í Àü´ŞµÇ´Â °æ¿ìµµ Àü´ŞµÈ´Ù.
-		// checkbox ÀÇ name Å°·Î ÃßÃâµÇ´Â String[] ÀÌ Á¸ÀçÇÏÁö ¾Ê¾Æ¼­
-		// null °ªÀ» °¡Áö°Ô µÊ.
+		
+		// 2. <form> ì—ì„œ ë„˜ì–´ì˜¨ checkbox íŒŒë¼ë¯¸í„° ì¶”ì¶œ
+		// (1) form ì˜ ìš”ì†Œì¤‘ name ì´ ìœ ì¼í•œ ê²½ìš°ì—ëŠ” ì¼ë°˜ì ìœ¼ë¡œ 1ê°œì˜ String ë³€ìˆ˜ë¡œ ë°›ëŠ”ë‹¤.
+		// (2) checkbox ëŠ” í•˜ë‚˜ì˜ name ìœ¼ë¡œ ì—¬ëŸ¬ê°œì˜ ê°’ì´ ì „ë‹¬ë˜ê¸° ë•Œë¬¸ì—
+		//     String[]ë¡œ ë°›ì•„ì§„ë‹¤ëŠ” ì ì— ì£¼ì˜í•´ì•¼ í•¨.
+		// (3) checkbox ëŠ” í•„ìˆ˜ ì„ íƒì´ ì•„ë‹Œ ê²½ìš° ì‚¬ìš©ë˜ëŠ” form ìš”ì†Œì´ë¯€ë¡œ
+		//     ì•„ë¬´ëŸ° ì„ íƒì´ ë˜ì§€ ì•Šê³  ì „ë‹¬ë˜ëŠ” ê²½ìš°ë„ ì¡´ì¬í•œë‹¤.
+		//     ì´ëŸ° ê²½ìš° checkbox ì˜ name í‚¤ë¡œ ì¶”ì¶œë˜ëŠ” String[] ì´ ì¡´ì¬í•˜ì§€ ì•Šì•„ì„œ
+		//     null ê°’ì„ ê°€ì§€ê²Œ ë¨.
 		String[] beverages = req.getParameterValues("beverage");
-
-		// 3. ÃßÃâµÈ µ¥ÀÌÅÍ °¡°ø => Ãâ·Â
-		// (1) System.out Ãâ·Â
-		System.out.println("== ÁÖ¹®µÈ À½·á ==");
-
+		
+		// 3. ì¶”ì¶œëœ ë°ì´í„° ê°€ê³µ => ì¶œë ¥
+		// (1) System.out ì¶œë ¥
+		
+		System.out.println("== ì£¼ë¬¸ëœ ìŒë£Œ == ");
+		
 		if (beverages != null) {
-			for (String beverage : beverages) {
+			for (String beverage: beverages) {
 				System.out.println(beverage);
 			}
 		} else {
-			System.out.println("ÁÖ¹®µÈ À½·á°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ì£¼ë¬¸ëœ ìŒë£Œê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 		
-		// (2) ºê¶ó¿ìÀú Ãâ·Â
+		// (2) ë¸Œë¼ìš°ì € ì¶œë ¥
 		PrintWriter out = res.getWriter();
-		out.println("<html>");
+		out.println("<html>");	
 			out.println("<head>");
-				out.println("<title> À½·á ÁÖ¹® °á°ú </title>");
+				out.println("<title> ìŒë£Œ ì£¼ë¬¸ ê²°ê³¼ </title>");
 			out.println("</head>");
 			out.println("<body>");
-				
-				out.println("<h3>À½·á ÁÖ¹® °á°ú</h3>");
-				out.println("<hr />");
 			
+				out.println("<h3>ìŒë£Œ ì£¼ë¬¸ ê²°ê³¼</h3>");
+				out.println("<hr />");
+				
 				if (beverages != null) {
-					for (String beverage : beverages) {
+					for (String beverage: beverages) {
 						out.println(beverage + "<br />");
 					}
 				} else {
-					out.println("ÁÖ¹®µÈ À½·á°¡ ¾ø½À´Ï´Ù.");
+					out.println("ì£¼ë¬¸ëœ ìŒë£Œê°€ ì—†ìŠµë‹ˆë‹¤.");
 				}
 			out.println("</body>");
 		out.println("</html>");
 	}
 
 }
-
-
-
-
-
-
-
-
-
 
 
 

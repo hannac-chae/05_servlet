@@ -11,55 +11,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * °£´ÜÇÑ °¡ÀÔ ÆäÀÌÁö¸¦ È£ÃâÇÏ°í
- * °¡ÀÔ ÆäÀÌÁö¿¡ ÀÔ·ÂµÈ ³»¿ëÀ» Ã³¸®ÇÏ´Â ¼­ºí¸´ Å¬·¡½º
+ * ê°„ë‹¨í•œ ê°€ì… í˜ì´ì§€ë¥¼ í˜¸ì¶œí•˜ê³ 
+ * ê°€ì… í˜ì´ì§€ì— ì…ë ¥ëœ ë‚´ìš©ì„ ì²˜ë¦¬í•˜ëŠ” ì„œë¸”ë¦¿ í´ë˜ìŠ¤
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 1. ¼­¹öÀÇ ¸®¼Ò½º¸¦ ¿äÃ»À» Ã³¸®ÇÏ´Â ¸Ş¼Òµå
-	 * 2. ºê¶ó¿ìÀú¿¡ GET ¿äÃ»À¸·Î register ÁÖ¼Ò°¡ ÀÔ·ÂµÇ¾úÀ» ¶§
-	 * 	  °¡ÀÔ ÆûÀÌ ÀÖ´Â HTML ÆäÀÌÁö¸¦ ºê¶ó¿ìÀú¿¡ º¸¿©ÁÜ
+	 * 1. ì„œë²„ì˜ ë¦¬ì†ŒìŠ¤ë¥¼ ìš”ì²­ì„ ì²˜ë¦¬í•˜ëŠ” ë©”ì†Œë“œ
+	 * 2. ë¸Œë¼ìš°ì €ì— GET ìš”ì²­ìœ¼ë¡œ register ì£¼ì†Œê°€ ì…ë ¥ë˜ì—ˆì„ ë•Œ
+	 *    ê°€ì… í¼ì´ ìˆëŠ” HTML í˜ì´ì§€ë¥¼ ë¸Œë¼ìš°ì €ì— ë³´ì—¬ì¤Œ
 	 */
 	protected void doGet(HttpServletRequest req
-					   , HttpServletResponse res) 
-							   throws ServletException, IOException {
-		// ¿äÃ»°´Ã¼¿¡ ´ëÇÑ ÇÑ±ÛÃ³¸®
-		req.setCharacterEncoding("UTF-8");
-
-		// (2) ÀÀ´äÇÑ±ÛÃ³¸®
-		res.setContentType("text/html;charset=UTF-8");
-		res.setCharacterEncoding("utf-8");
+			           , HttpServletResponse res) 
+			        		          throws ServletException, IOException {
+		// ìš”ì²­ê°ì²´ì— ëŒ€í•œ í•œê¸€ì²˜ë¦¬
+		req.setCharacterEncoding("utf-8");
+		// ì‘ë‹µê°ì²´ í•œê¸€ ì²˜ë¦¬
+		res.setContentType("text/html; charset=utf-8");
 		
-		// 03_registerForm.html ·Î ¿äÃ»À» Àü´Ş ±¸¹® ¿Ü¿ì±â
+		// 03_registerForm.html ë¡œ ìš”ì²­ì„ ì „ë‹¬
+		// (1) forward ë¡œ ì „ë‹¬ : ì£¼ì†Œí‘œì‹œì¤„ì— ì£¼ì†Œê°€ ë³€ê²½ë˜ì§€ ì•ŠìŒ
+		//                     ìµœì´ˆì˜ req, res ê°€ ì¬ì‚¬ìš©ë˜ê¸° ë•Œë¬¸
 		RequestDispatcher reqd = 
 				req.getRequestDispatcher("03_registerForm.html");
 		
 		reqd.forward(req, res);
 		
+		// (2) sendRedirect ë¡œ ì „ë‹¬ : ì£¼ì†Œí‘œì‹œì¤„ì— ì£¼ì†Œê°€ ë³€ê²½ë¨
+		//           /register ìš”ì²­ì— ëŒ€í•œ ì‘ë‹µì´ ì¼ë‹¨ ë°œìƒí•˜ê³ 
+		//           ë¸Œë¼ìš°ì €ê°€ ì‘ë‹µì„ í•´ì„í•˜ì—¬ ìë™ ìš”ì²­ì„ ë°œìƒì‹œí‚¤ë¯€ë¡œ
+//		res.sendRedirect("03_registerForm.html");
 	}
 
 	/**
-	 * 1. ¼­¹ö·Î Àü¼ÛµÈ °ªÀ» Ã³¸®ÇÏ´Â ¸Ş¼Òµå
-	 * Æû¿¡ ÀÇÇØ POST ¿äÃ»ÀÌ ¹ß»ıÇÑ °æ¿ì
-	 * ÆûÀÇ ¿äÃ» ÆÄ¶ó¹ÌÅÍ¿¡ ÀÔ·ÂµÈ °ªµéÀ» ÃßÃâÇÏ¿© Ã³¸®
+	 * 1. ì„œë²„ë¡œ ì „ì†¡ëœ ê°’ì„ ì²˜ë¦¬í•˜ëŠ” ë©”ì†Œë“œ
+	 * í¼ì— ì˜í•´ POST ìš”ì²­ì´ ë°œìƒí•œ ê²½ìš°
+	 * í¼ì˜ ìš”ì²­ íŒŒë¼ë¯¸í„°ì— ì…ë ¥ëœ ê°’ë“¤ì„ ì¶”ì¶œí•˜ì—¬ ì²˜ë¦¬
 	 */
 	protected void doPost(HttpServletRequest req
-						, HttpServletResponse res) 
-								throws ServletException, IOException {
-		// ¿äÃ»°´Ã¼¿¡ ´ëÇÑ ÇÑ±ÛÃ³¸®
-		req.setCharacterEncoding("UTF-8");
-
-		// (2) ÀÀ´äÇÑ±ÛÃ³¸®
-		res.setContentType("text/html;charset=UTF-8");
-		res.setCharacterEncoding("utf-8");
+			            , HttpServletResponse res)
+			            		throws ServletException, IOException {
+		// ìš”ì²­ê°ì²´ì— ëŒ€í•œ í•œê¸€ì²˜ë¦¬
+		req.setCharacterEncoding("utf-8");
+		// ì‘ë‹µê°ì²´ í•œê¸€ ì²˜ë¦¬
+		res.setContentType("text/html; charset=utf-8");
 		
-		// 1. ¿äÃ» ÆÄ¶ó¹ÌÅÍ ÃßÃâ
+		// 1. ìš”ì²­ íŒŒë¼ë¯¸í„° ì¶”ì¶œ
 		String userId = req.getParameter("userId");
 		String userName = req.getParameter("userName");
-		String userPass = req.getParameter("userPass");
+		String userPass = req.getParameter("userPass"); 
 		String passConfirm = req.getParameter("passConfirm");
 		String gender = req.getParameter("gender");
 		int age = Integer.parseInt(req.getParameter("age"));
@@ -72,40 +74,46 @@ public class RegisterServlet extends HttpServlet {
 		String address = req.getParameter("address");
 		String intro = req.getParameter("intro");
 		
-		// (2) ÃßÃâµÈ ¿äÃ» ÆÄ¶ó¹ÌÅÍ È­¸é¿¡ Ãâ·Â
+		
+		// 2. ì¶”ì¶œëœ ìš”ì²­ íŒŒë¼ë¯¸í„° í™”ë©´ì— ì¶œë ¥
 		PrintWriter out = res.getWriter();
 		
-		out.println("<html>");
-			out.println("<head>");
-				out.println("<title> °¡ÀÔ Æû ¿äÃ» Ã³¸® </title>");
-			out.println("</head>");
-			out.println("<body>");
+		out.println("<html>");	
+		out.println("<head>");
+			out.println("<title> ê°€ì… í¼ ìš”ì²­ ì²˜ë¦¬ </title>");
+		out.println("</head>");
+		out.println("<body>");
 			
-				out.println("<h3>°¡ÀÔ ½ÅÃ» ³»¿ë</h3>");
-				out.println("<hr />");
-				
-				out.println("userId=" + userId + "<br />");
-				out.println("userPass=" + userPass + "<br />");
-				out.println("passConfirm=" + passConfirm+ "<br />");
-				out.println("gender=" + gender + "<br />");
-				out.println("age=" + age + "<br />");
+			out.println("<h3>ê°€ì… ì‹ ì²­ ë‚´ìš©</h3>");
+			out.println("<hr />");
 			
-				out.println("hobby=");
-				if (hobbies != null) {
-					for (String hobby: hobbies) {
-						out.println(hobby + ", ");
-					}
-					out.println("<br />");
-				} else {		
-					out.println("¼±ÅÃµÈ Ãë¹Ì°¡ ¾ø½À´Ï´Ù. <br />");
+			out.println("userId=" + userId + "<br />");
+			out.println("userName=" + userName + "<br />");
+			out.println("userPass=" + userPass + "<br />");
+			out.println("passConfirm=" + passConfirm + "<br />");
+			out.println("gender=" + gender + "<br />");
+			out.println("age=" + age + "<br />");
+			
+			out.println("hobby=");
+			if (hobbies != null) {
+				for (String hobby: hobbies) {
+					out.println(hobby + ", ");
 				}
-				
-				out.println("email=" + emailId + "@" + emailDomain + "<br />");
-				out.printf("phone=%s-%s-%s<br />", phone1, phone2, phone3);
-				out.println("address=" + address + "<br />");
-				out.println("intro=" + intro + "<br />");
-			out.println("</body>");
-		out.println("</html>");
+				out.println("<br/>");
+			} else {
+				out.println("ì„ íƒëœ ì·¨ë¯¸ê°€ ì—†ìŠµë‹ˆë‹¤.<br/>");
+			}
+			
+			out.println("email=" + emailId + "@" + emailDomain + "<br />");
+			out.printf("phone=%s-%s-%s<br />", phone1, phone2, phone3);
+			out.println("address=" + address + "<br />");
+			out.println("intro=" + intro + "<br />");
+		out.println("</body>");
+	out.println("</html>");
+		
+		
+		
+		
 	}
 
 }

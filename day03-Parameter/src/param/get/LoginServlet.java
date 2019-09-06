@@ -10,68 +10,65 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * ¸¶Ä¡ ·Î±×ÀÎÀÌ Ã³¸®µÇ´Â °Í °°ÀÌ
- * HTML ÀÇ <form> ¿¡¼­ »ı¼ºµÈ GET request¸¦
- * Ã³¸®ÇÏ´Â ¼­ºí¸´
+ * ë§ˆì¹˜ ë¡œê·¸ì¸ì´ ì²˜ë¦¬ ë˜ëŠ” ê²ƒ ê°™ì´
+ * HTMLì˜ <form> ì—ì„œ ìƒì„±ëœ GET requestë¥¼ 
+ * ì²˜ë¦¬í•˜ëŠ” ì„œë¸”ë¦¿ 
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * HTML ¿¡¼­ GET À¸·Î Àü¼ÛµÈ
-	 * form ÆÄ¶ó¹ÌÅÍ¸¦ ÃßÃâÇÏ¿© ·Î±×ÀÎÀÌ µÈ °Í Ã³·³ Ã³¸®ÇÑ´Ù.
+	 * HTML ì—ì„œ GET ìœ¼ë¡œ ì „ì†¡ëœ 
+	 * form íŒŒë¼ë¯¸í„°ë¥¼ ì¶”ì¶œí•˜ì—¬ ë¡œê·¸ì¸ì´ ëœ ê²ƒ ì²˜ëŸ¼ ì²˜ë¦¬í•œë‹¤. 
 	 */
 	protected void doGet(HttpServletRequest req
-					   , HttpServletResponse res) 
-							   throws ServletException, IOException {
-		// 1. ÇÑ±Û¼¼ÆÃ
-		// (1) ¿äÃ» °´Ã¼¿¡ ¿äÃ» ÆÄ¶ó¹ÌÅÍ·Î ÇÑ±ÛÀÌ ÀÔ·ÂµÉ ¼ö ÀÖÀ¸¹Ç·Î ÀÔ·Â°ª¿¡ ´ëÇÑ ÇÑ±ÛÃ³¸®
+			           , HttpServletResponse res) 
+			        		      throws ServletException, IOException {
+		// 1. í•œê¸€ì„¸íŒ…
+		// (1) ìš”ì²­ ê°ì²´ì— ìš”ì²­ íŒŒë¼ë¯¸í„°ë¡œ í•œê¸€ì´ ì…ë ¥ë  ìˆ˜ ìˆìœ¼ë¯€ë¡œ ì…ë ¥ê°’ì— ëŒ€í•œ í•œê¸€ì²˜ë¦¬
 		req.setCharacterEncoding("utf-8");
-		
-		// (2) ÀÀ´ä½Ã ÇÑ±ÛÃ³¸®°¡ µÇ¾î¾ß ÇÏ¹Ç·Î ÀÀ´ä °´Ã¼¿¡ ÇÑ±Û Ã³¸®
+		// (2) ì‘ë‹µì‹œ í•œê¸€ì²˜ë¦¬ê°€ ë˜ì–´ì•¼ í•˜ë¯€ë¡œ ì‘ë‹µê°ì²´ì— í•œê¸€ì²˜ë¦¬
 		res.setContentType("text/html; charset=utf-8");
 		
-		// 2. ¿äÃ»°´Ã¼(req)·Î ºÎÅÍ ¿äÃ» ÆÄ¶ó¹ÌÅÍ ÃßÃâ
-		// req·Î HTMLÀÇ <form> ¿¡¼­ ¹ß»ıÇÑ °ª(ÆÄ¶ó¹ÌÅÍ)°¡ Àü´ŞµÈ °æ¿ì
-		// ¿äÃ»ÁÖ¼Ò?Å°=°ª&Å°=°ª...
-		// (1) ¼­ºí¸´¿¡¼­ ¿äÃ» ÆÄ¶ó¹ÌÅÍ´Â Ç×»ó Stirng À¸·Î Àü´ŞµÊ
-		// (2) req °´Ã¼¿¡ getParameter() ¸Ş¼Òµå¸¦ »ç¿ëÇÏ¿© ÃßÃâÇÑ´Ù.
+		// 2. ìš”ì²­ ê°ì²´(req)ë¡œë¶€í„° ìš”ì²­ íŒŒë¼ë¯¸í„° ì¶”ì¶œ
+		// reqë¡œ HTMLì˜ <form> ì—ì„œ ë°œìƒí•œ ê°’(íŒŒë¼ë¯¸í„°)ê°€ ì „ë‹¬ëœ ê²½ìš°
+		// ìš”ì²­ì£¼ì†Œ?í‚¤=ê°’&í‚¤=ê°’... 
+		// (1) ì„œë¸”ë¦¿ì—ì„œ ìš”ì²­ íŒŒë¼ë¯¸í„°ëŠ” í•­ìƒ Stringìœ¼ë¡œ ì „ë‹¬ë¨
+		// (2) req ê°ì²´ì— getParameter() ë©”ì†Œë“œë¥¼ ì‚¬ìš©í•˜ì—¬ ì¶”ì¶œí•œë‹¤.
 		String userId = req.getParameter("userId");
 		String password = req.getParameter("password");
 		int semester = Integer.parseInt(req.getParameter("semester"));
 		
-		// 3. ÃßÃâµÈ ÆÄ¶ó¹ÌÅÍ·Î °¡°ø
-		// ==> ÃßÃâµÈ ÀÔ·Â°ªÀ» Ãâ·Â
-		// (1) sysout Ãâ·Â
-		System.out.println("== È­¸é¿¡¼­ Àü´ŞµÈ ·Î±×ÀÎ µ¥ÀÌÅÍ ==");
+		// 3. ì¶”ì¶œëœ íŒŒë¼ë¯¸í„°ë¡œ ê°€ê³µ
+		// ==> ì¶”ì¶œëœ ì…ë ¥ê°’ì„ ì¶œë ¥
+		// (1) sysout ì¶œë ¥
+		System.out.println("== í™”ë©´ì—ì„œ ì „ë‹¬ëœ ë¡œê·¸ì¸ ë°ì´í„° ==");
 		System.out.println("userId=" + userId);
 		System.out.println("password=" + password);
 		System.out.println("semester=" + semester);
 		
-		// (2) ºê¶ó¿ìÀú Ãâ·Â
+		// (2) ë¸Œë¼ìš°ì € ì¶œë ¥
 		PrintWriter out = res.getWriter();
-		out.println("<html>");
+		out.println("<html>");	
 			out.println("<head>");
-				out.println("<title> ·Î±×ÀÎ °á°ú </title>");
+				out.println("<title> ë¡œê·¸ì¸ ê²°ê³¼ </title>");
 			out.println("</head>");
 			out.println("<body>");
-				out.println("== È­¸é¿¡¼­ Àü´ŞµÈ ·Î±×ÀÎ µ¥ÀÌÅÍ ==<br/>");
+				out.println("== í™”ë©´ì—ì„œ ì „ë‹¬ëœ ë¡œê·¸ì¸ ë°ì´í„° ==<br/>");
 				out.println("userId=" + userId + "<br/>");
 				out.println("password=" + password + "<br/>");
 				out.println("semester=" + semester + "<br/>");
 			out.println("</body>");
 		out.println("</html>");
 		
-		// 4. ÇÊ¿ä½Ã °¡°øµÈ µ¥ÀÌÅÍ¸¦ ´Ù¸¥ ÆäÀÌÁö·Î Àü´Ş / ¿©±â¼­ Á÷Á¢ °á°ú Ã³¸®(ºê¶ó¿ìÀú Ãâ·Â Ã³¸® µî)
+		// 4. í•„ìš”ì‹œ ê°€ê³µëœ ë°ì´í„°ë¥¼ ë‹¤ë¥¸ í˜ì´ì§€ë¡œ ì „ë‹¬ / ì—¬ê¸°ì„œ ì§ì ‘ ê²°ê³¼ ì²˜ë¦¬(ë¸Œë¼ìš°ì € ì¶œë ¥ ì²˜ë¦¬ ë“±)
+		
+		// 5. ì‚¬ìš©í•œ out ê°ì²´ ë‹«ê¸°
+		out.close();
 	}
 
 }
-
-
-
-
-
 
 
 

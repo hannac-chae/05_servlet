@@ -5,17 +5,32 @@
 <title>로그인</title>
 </head>
 <body>
-<!-- form[action="login" method="get"]>(input[type="" name="" value=""]+br)*4 -->
+<!-- form[action="login" method="get"] -->
+<!-- >(input[type="" name="" value=""]+br)*4 -->
+
 <form action="login" method="get">
 	<h3>사용자 정보 입력</h3>
 	아이디 : <input type="text" name="userId" required="required"/>
 	<br />
-	비밀번호 : <input type="password" name="password" required="required"/>
+	비밀번호 : <input type="password" name="password" required="required" />
 	<br />
-	학기 : <input type="text" name="semester"/>
+	학기 : <input type="text" name="semester" />
 	<br />
-	<input type="submit" value="로그인하기" />
-	<input type="reset"  value="초기화" />
+	<input type="submit" value="로그인" />
+	<input type="reset" value="초기화" />
+	<br />
+</form>
+<hr />
+<form action="login.do" method="get">
+	<h3>사용자 정보 입력(login.do 로 요청)</h3>
+	아이디 : <input type="text" name="userId" required="required"/>
+	<br />
+	비밀번호 : <input type="password" name="password" required="required" />
+	<br />
+	학기 : <input type="text" name="semester" />
+	<br />
+	<input type="submit" value="로그인" />
+	<input type="reset" value="초기화" />
 	<br />
 </form>
 
