@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>day04-02.JspBasic</display-name>
+  
+  <!-- 
+  	web.xml : 자바 웹 서비스 구성을 위한 표준 문서
+  	          반드시 /WEB-INF/ 아래 존재하도록 구성
+  	          하나의 웹 서비스마다 한개씩만 존재
+   -->
+   
+  <!-- 
+  	<servlet> : 엘리먼트를 사용하여 서블릿 1개를 설정
+  	            servlet 클래스 / jsp 파일 1개를 의미
+  	<servlet> 엘리먼트는 <servlet-mapping>과 
+  	반드시 짝을 이루어서 설정
+  	
+  	<servlet> 엘리먼트 하위 엘리먼트로
+  		<servlet-name>, <servlet-class> : 서블릿 클래스 설정
+  		<servlet-name>, <jsp-file> : JSP 파일 설정
+  		두 엘리먼트를 상황에 맞추어 만드시 작성해야 함
+  		
+  	=============================================
+  	
+  	<servlet-mapping> : <servlet> 에서 정의된 서블릿을
+  	                              찾아갈 수 있는 논리적 이름을 설정하는 엘리먼트
+  	                              
+	<servlet-mapping> 하위 엘리먼트로
+		<servlet-name>, <url-pattern>이 작성되어야 함
+		  	                              
+  	<servlet-mapping> 의 하위 엘리먼트인
+  		<servlet-name> 의 값은
+  		짝인 <servlet> 엘리먼트의  <servlet-name>값과
+  		대소문자가 정확히 일치해야 함 
+   -->
+  <servlet>
+  	<servlet-name>bookList</servlet-name>
+  	<jsp-file>/WEB-INF/list/bookList.jsp</jsp-file>  	
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>bookList</servlet-name>
+  	<url-pattern>/bookList</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

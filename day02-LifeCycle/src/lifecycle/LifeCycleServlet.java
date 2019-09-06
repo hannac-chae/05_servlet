@@ -77,6 +77,6 @@ public class LifeCycleServlet extends HttpServlet {
 		System.out.println("service() 메소드가 실행되었습니다.");
 		System.out.println("service 메소드 실행 횟수 " + count);
 		
-	}
+	} 
 
 }
