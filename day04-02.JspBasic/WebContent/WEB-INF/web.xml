@@ -34,12 +34,62 @@
    -->
   <servlet>
   	<servlet-name>bookList</servlet-name>
-  	<jsp-file>/WEB-INF/list/bookList.jsp</jsp-file>  	
+  	<jsp-file>/WEB-INF/jsp/list/bookList.jsp</jsp-file>  	
   </servlet>
   <servlet-mapping>
   	<servlet-name>bookList</servlet-name>
   	<url-pattern>/bookList</url-pattern>
   </servlet-mapping>
+  
+  <!-- copy.jsp 파일 url 접근 주소 등록 -->
+  <servlet>
+  	<servlet-name>copyJsp</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/actionTag/copy.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>copyJsp</servlet-name>
+  	<url-pattern>/copy</url-pattern>
+  </servlet-mapping>
+  
+  <!-- main.jsp 파일 url 접근 주소 등록 -->
+  <servlet>
+  	<servlet-name>mainJsp</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/actionTag/main.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>mainJsp</servlet-name>
+  	<url-pattern>/main</url-pattern>
+  </servlet-mapping>  
+  
+  <!-- save.jsp 등록 -->
+  <servlet>
+  	<servlet-name>saveJsp</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/actionTag/book/save.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>saveJsp</servlet-name>
+  	<url-pattern>/save</url-pattern>
+  </servlet-mapping>  
+  
+  <!-- beans.jsp 등록 -->
+  <servlet>
+  	<servlet-name>beansJsp</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/actionTag/book/beans.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>beansJsp</servlet-name>
+  	<url-pattern>/beans</url-pattern>
+  </servlet-mapping> 
+  
+  <!-- list.jsp 등록 -->
+  <servlet>
+  	<servlet-name>listJsp</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/actionTag/book/list.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>listJsp</servlet-name>
+  	<url-pattern>/list</url-pattern>
+  </servlet-mapping> 
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
