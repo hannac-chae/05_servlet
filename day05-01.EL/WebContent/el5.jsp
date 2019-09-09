@@ -56,5 +56,58 @@ page =&gt; request =&gt; session =&gt; application <br />
 pageScope =&gt; requestScope =&gt; sessionScope =&gt; applicationScope <br />
 </div>
 
+
+<%
+	// 1. JSP 내장객체중 page 에 attribute 로 id 추가
+	pageContext.setAttribute("id", "gil-dong1");
+
+	// 2. JSP 내장객체중 request 에 attribute로 id 추가
+	request.setAttribute("id", "gil-dong2");
+	request.setAttribute("name", "길동이");
+	
+	// 3. JSP 내장객체중 session 에 attribute로 id 추가
+	session.setAttribute("id", "gil-dong-S");
+	session.setAttribute("name", "홍길동이");
+	
+	// 4. JSP 내장객체중 application에 attribute id 추가
+	application.setAttribute("id", "gildong-app");
+%>
+<h3>EL 의 내장객체에 추가된 속성(attribute) 추출</h3>
+<ol>
+	<li>pageScope : \${pageScope.id} = ${pageScope.id}</li>
+	<li>requestScope : \${requestScope.id} 
+	                  = ${requestScope.id}</li>
+	<li>sessionScope : \${sessionScope.id} 
+	                  = ${sessionScope.id}</li>
+	<li>applicationScope : \${applicationScope.id} 
+	                  = ${applicationScope.id}</li>
+	<li>속성의 범위를 명시하지 않고 속성 명으로 바로 접근시 누가 선택되는가? <br />
+	   =&gt; 가장 작은 범위의 속성이 자동 선택됨. <br />
+	   \${id} = ${id} <br />
+	   \${name} = ${name}
+	 </li>	                  
+</ol>
+
+<hr />
+<h3>scriptlet, expressionTag 로 속성을 추출</h3>
+<%
+	String pageId = ;
+	String reqId = ;
+	String sessId = ;
+	String appId = ;
+	
+	String reqName = ;
+	String sessName = ;
+%>
+
+<ol>
+	<li>pageId = <%=pageId %></li>
+	<li>reqId = <%=reqId %></li>
+	<li>sessId = <%=sessId %></li>
+	<li>appId = <%=appId %></li>
+	<li>reqName = <%=reqName %></li>
+	<li>sessName = <%=sessName %></li>
+</ol>
+
 </body>
 </html>
