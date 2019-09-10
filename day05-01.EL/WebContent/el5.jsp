@@ -91,13 +91,13 @@ pageScope =&gt; requestScope =&gt; sessionScope =&gt; applicationScope <br />
 <hr />
 <h3>scriptlet, expressionTag 로 속성을 추출</h3>
 <%
-	String pageId = ;
-	String reqId = ;
-	String sessId = ;
-	String appId = ;
+	String pageId = (String) pageContext.getAttribute("id");
+	String reqId = (String) request.getAttribute("id");
+	String sessId = (String) session.getAttribute("id");
+	String appId = (String) application.getAttribute("id");
 	
-	String reqName = ;
-	String sessName = ;
+	String reqName = (String) request.getAttribute("name");
+	String sessName = (String) session.getAttribute("name");
 %>
 
 <ol>
