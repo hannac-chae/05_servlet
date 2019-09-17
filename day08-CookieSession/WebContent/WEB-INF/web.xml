@@ -8,7 +8,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>cookieLoginJsp</servlet-name>
-  	<url-pattern>/views/cookie/login</url-pattern>
+  	<url-pattern>/cookie/views/login</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -17,7 +17,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>cookieSuccessJsp</servlet-name>
-  	<url-pattern>/views/cookie/success</url-pattern>
+  	<url-pattern>/cookie/views/success</url-pattern>
   </servlet-mapping>
   
   

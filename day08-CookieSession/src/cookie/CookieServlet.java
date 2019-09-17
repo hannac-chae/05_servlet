@@ -3,8 +3,10 @@ package cookie;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +40,7 @@ public class CookieServlet extends HttpServlet {
 
 		// 1. 이동할 뷰 결정 
 		// (web.xml 에 등록된 쿠키 로그인 jsp 의 url 매핑 주소) 
-		String view = "/views/cookie/login";
+		String view = "/cookie/views/login";
 		
 		// 2. forward 로 페이지 이동
 		RequestDispatcher reqd = 
@@ -49,12 +51,49 @@ public class CookieServlet extends HttpServlet {
 	}
 
 	/**
-	 * 
+	 *  /WEB-INF/views/cookie/login.jsp 에서 전송된
+	 *  폼 파라미터(아이디, 비번)를 가상으로 로그인 처리 하여
+	 *  쿠키 객체를 생성 후 응답객체에 추가하여 응답한다.
+	 *  
 	 */
 	protected void doPost(HttpServletRequest request
 			           , HttpServletResponse response) 
 			         throws ServletException, IOException {
-		// 로그인 처리 로직
+		// 1. 한글처리
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		// 2. 요청 파라미터 추출
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("password");
+		
+		System.out.println(userId + ":" + password);
+		
+		// 3. 로그인 성공 가정
+		// 아이디 = java, 비밀번호 = jsp 라고 입력되면 로그인 성공으로 친다
+		if ("java".equals(userId) && 
+			"jsp".equals(password)) {
+			
+			// 쿠키 정보 생성
+			Cookie ckUserId = new Cookie("userId", userId);
+			Cookie ckPassword = new Cookie("password", password);
+			
+			// 쿠키 만료 시간 설정
+			ckUserId.setMaxAge(10); // 10초 후 쿠키 유효 만료됨
+			ckPassword.setMaxAge(10);
+			
+			// 쿠키를 응답객체(response)에 추가
+			response.addCookie(ckUserId);
+			response.addCookie(ckPassword);
+		}
+		
+		// 4. 로그인 성공 페이지 이동(sendRedirect) 
+		//    절대경로를 조합하기 위하여 컨텍스트 루트를 얻어냄
+		ServletContext context = getServletContext();
+		String view = context.getContextPath() 
+				    + "/cookie/views/success";
+		
+		response.sendRedirect(view);
 	}
 
 }
