@@ -16,7 +16,8 @@
 
 <!-- table>(tr>th+td)*3 -->
 <h3>로그인 하세요(Cookie)</h3>
-<form action="login" method="post">
+<form method="post"
+  action="${pageContext.request.contextPath}/cookie/login">
 	<table>
 		<tr>
 			<th>유저 아이디</th>
